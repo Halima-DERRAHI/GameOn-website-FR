@@ -102,7 +102,7 @@ function validateLastName () {
 }
 
 // email validation
-function   validateEmail() {
+function validateEmail() {
   const emailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
   if (!email.value.trim()) {
     showError(email , "Veuillez renseigner un E-mail.");
@@ -119,7 +119,14 @@ function   validateEmail() {
 }
 // Birthday date validation
 function validateBirthDay() {
-  
+  if (birthdate != null) {
+    hideError(birthdate);
+    return true;
+  }
+  else {
+    showError(birthdate , "Veuillez renseigner une date de naissance valide.");
+    return false;
+  }
 }
 
 // Quantity validation

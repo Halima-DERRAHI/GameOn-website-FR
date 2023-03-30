@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="Logo.png" width="auto" height="auto">
       </div>
       <div class="main-navbar">
         <a href="#" class="active"><span>Accueil</span></a>
@@ -44,49 +44,38 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./bg_img.jpg" alt="img">
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
         </button>
       </div>
-
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
-              name="reserve"
-              id = "reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();">
-              <div
-                class="formData">
+            <form name="reserve" id = "reserve" action="index.html" method="get" onsubmit="return validate();">
+              <div class="formData">
                 <label>Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first" minlength="2"/>
                 <br><small></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Nom</label><br>
                 <input class="text-control" type="text" id="last" name="last"/>
                 <br><small></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>E-mail</label><br>
                 <input class="text-control" type="email" id="email" name="email"/>
                 <br><small></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Date de naissance</label><br>
                 <input class="text-control" type="date" id="birthdate" name="birthdate"/>
                 <br><small></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <small></small>
@@ -126,14 +115,8 @@
                 <br><small></small>
               </div>
 
-              <div
-                class="formData">
-                <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  checked
-                />
+              <div class="formData">
+                <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
@@ -146,12 +129,7 @@
                 </label>
                 <br>
               </div>
-              <input
-                class="btn-submit"
-                type="submit"
-                class="button"
-                value="C'est parti"
-              />
+              <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
             </form>
           </div>
         </div>
