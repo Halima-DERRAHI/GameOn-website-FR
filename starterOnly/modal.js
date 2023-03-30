@@ -119,13 +119,13 @@ function validateEmail() {
 }
 // Birthday date validation
 function validateBirthDay() {
-  if (birthdate != null) {
-    hideError(birthdate);
-    return true;
-  }
-  else {
+  if (!birthdate) {
     showError(birthdate , "Veuillez renseigner une date de naissance valide.");
     return false;
+  }
+  else {
+    hideError(birthdate);
+    return true;
   }
 }
 
@@ -143,13 +143,13 @@ function validateQuantity() {
 // Location validation
 function validationLocation(){
   let radioCheck = document.querySelector('input[name = "location"]:checked');
-  if (radioCheck != null){
-    hidecheckboxError(locationChoice);
-    return true;
-  }
-  else {
+  if (!radioCheck){
     checkboxError(locationChoice , "Veuillez renseigner une localisation.");
     return false;
+  }
+  else {
+    hidecheckboxError(locationChoice);
+    return true;
   }
 }
 // CU validations
