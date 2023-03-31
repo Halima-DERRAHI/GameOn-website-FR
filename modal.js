@@ -43,10 +43,12 @@ function closeModal () {
 }
 
 // form submit
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
-  //e.validate();
-
+  validate();
+  if ((validateFirstName())&&(validateLastName())&&(validateEmail())&&(validateBirthDay())&&(validateQuantity())&&(validationLocation())&&(validateCu())) {
+    confirmMessage();
+  }
 })
 
 // validation form
@@ -119,7 +121,10 @@ function validateEmail() {
 }
 // Birthday date validation
 function validateBirthDay() {
-  if (!birthdate) {
+
+var dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
+
+if (!dateRegex.test(birthdate.value)) {
     showError(birthdate , "Veuillez renseigner une date de naissance valide.");
     return false;
   }
