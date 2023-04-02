@@ -14,6 +14,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.getElementById("reserve");
 const closeModalBtn = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
+const inputValid = document.querySelector(".input-valid");
 // Form elements
 const firstName = document.getElementById ("first");
 const lastName = document.getElementById ("last");
@@ -47,7 +48,7 @@ form.addEventListener('submit', function(e) {
   e.preventDefault();
   validate();
   if ((validateFirstName())&&(validateLastName())&&(validateEmail())&&(validateBirthDay())&&(validateQuantity())&&(validationLocation())&&(validateCu())) {
-    confirmMessage();
+    sendForm();
   }
 })
 
@@ -197,4 +198,14 @@ function hidecheckboxError(input) {
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
   msgError.innerText = " ";
+}
+
+function ConfirmMsg() {
+  modalbg.classList.add('message-valid');
+  validMsg.innerHtml = ("<p>Merci !<br> Votre réservation a été reçue.</p>");
+  form.reset();
+}
+
+function sendForm() {
+
 }
