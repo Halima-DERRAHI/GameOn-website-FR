@@ -56,7 +56,6 @@ form.addEventListener('submit', function(e) {
 })
 
 // validation form
-
 function validate() {
   validateFirstName();
   validateLastName();
@@ -161,6 +160,7 @@ function validationLocation(){
     return true;
   }
 }
+
 // CU validations
 function validateCu() {
 if (CU.checked) {
