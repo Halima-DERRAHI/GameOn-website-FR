@@ -42,6 +42,7 @@ function launchModal() {
 // close modal form
 function closeModal () {
   form.reset();
+  hideError(firstName); hideError(lastName); hideError(email); hideError(birthdate); hideError(quantity); hidecheckboxError(locationChoice); hidecheckboxError(CU);
   modalbg.style.display = "none";
 }
 
@@ -192,7 +193,7 @@ function hideError(input) {
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
   msgError.innerText = " ";
-  input.className = "text-control input-valid";
+  input.className = "text-control";
 }
 
 // hide error checkbox function

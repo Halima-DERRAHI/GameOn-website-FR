@@ -56,6 +56,7 @@ p {
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
+  text-decoration: underline;
   border-radius: 15px;
 }
 
@@ -63,12 +64,29 @@ p {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  margin-right: 30px;
 }
 
 .topnav .icon {
   display: none;
+  color:#ff0000;
 }
-
+@media screen and (max-width: 992px) {
+  .main-navbar {
+    margin-top: 3.5%;
+    margin-right: 3.5%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-logo img {
+    width: 70%;
+    padding: 12PX 0px;
+  }
+  .main-navbar {
+    margin-top: 0;
+    margin-right: 0;
+  }
+}
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -96,7 +114,7 @@ p {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /*margin-top: -15px;*/
   }
 } 
 
@@ -211,9 +229,9 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-.input-valid {
+/*.input-valid {
   border: 2px solid #279e7a;
-}
+}*/
 .input-error {
   border: 2px solid #fe142f;
 }
@@ -501,7 +519,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -528,11 +546,19 @@ footer {
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
+    padding-left: 0;
   }
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
+  }
+  .content {
+    margin-top: 0;
+  }
+  .bground {
+    margin-top: 100px;
+    background-color: white;
   }
   .copyrights {
     margin-top: 50px;
