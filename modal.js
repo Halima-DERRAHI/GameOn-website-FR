@@ -75,8 +75,8 @@ function validateFirstName () {
       showError(firstName , "Veuillez entrer 2 caractères ou plus pour le champ du prenom." );
       return false;
       }
-    else if (firstName.value.match(/^ *$/) ) {
-      showError(firstName , "Veuillez entrer un prénom valide." );
+    else if (firstName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g) ) {
+      showError(firstName , "Veuillez entrer un prénom valide.");
       return false;
       }
      else {
@@ -95,7 +95,7 @@ function validateLastName () {
       showError(lastName , "Veuillez entrer 2 caractères ou plus pour le champ du nom." );
       return false;
       }
-    else if (lastName.value.match(/^ *$/) ) {
+    else if (lastName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g)) {
       showError(lastName , "Veuillez entrer un prénom valide." );
       return false;
       }
