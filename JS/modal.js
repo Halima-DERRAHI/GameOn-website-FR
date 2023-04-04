@@ -49,7 +49,7 @@ function closeModal () {
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   validate();
-  if ((validateFirstName())&&(validateLastName())&&(validateEmail())&&(validateBirthDay())&&(validateQuantity())&&(validationLocation())&&(validateCu())) {
+  if ((validateFirstName()) && (validateLastName()) && (validateEmail()) && (validateBirthDay()) && (validateQuantity()) &&( validationLocation()) && (validateCu())) {
     ConfirmMsg();
   }
 })
@@ -204,7 +204,6 @@ function hidecheckboxError(input) {
 
 // cofirm message
 function ConfirmMsg() {
-  //modalbg.classList.add('message-valid');
   form.style.display = "none"; 
   confirmMsg.innerHTML = "<p>Merci !<br> Votre réservation a été reçue.</p>" + '<button class="btn-submit button" onclick="closeModal()">Fermer</button>';
   form.reset();
