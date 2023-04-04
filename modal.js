@@ -25,7 +25,6 @@ const birthdate = document.getElementById ("birthdate");
 const quantity = document.getElementById ("quantity");
 const locationChoice = document.getElementById("location6");
 const CU = document.getElementById("checkbox1");
-
   
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
