@@ -77,7 +77,7 @@ function validateFirstName () {
       showError(firstName , "Veuillez renseigner un prénom." );
       return false;
       }
-    else if (firstName.length <= 1) {
+    else if (firstName.value.length <= 1) {
       showError(firstName , "Veuillez entrer 2 caractères ou plus pour le champ du prenom." );
       return false;
       }
@@ -97,12 +97,12 @@ function validateLastName () {
       showError(lastName , "Veuillez renseigner un nom." );
       return false;
       }
-    else if (lastName.length <= 1) {
+    else if (lastName.value.length <= 1) {
       showError(lastName , "Veuillez entrer 2 caractères ou plus pour le champ du nom." );
       return false;
       }
     else if (!lastName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g)) {
-      showError(lastName , "Veuillez entrer un prénom valide." );
+      showError(lastName , "Veuillez entrer un nom valide." );
       return false;
       }
      else {
@@ -147,8 +147,12 @@ function validateBirthDay() {
 
 var dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
 
-if (!dateRegex.test(birthdate.value) || (!limitAge(birthdate))) {
+if (!dateRegex.test(birthdate.value)) {
     showError(birthdate , "Veuillez renseigner une date de naissance valide.");
+    return false;
+  }
+  else if (!limitAge(birthdate)){
+    showError(birthdate , "Vous devez avoir plus de 12 ans pour pouvoir faire une réservation.");
     return false;
   }
   else {
