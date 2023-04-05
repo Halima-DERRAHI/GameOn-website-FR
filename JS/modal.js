@@ -14,6 +14,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.getElementById("reserve");
 const closeModalBtn = document.querySelectorAll(".close");
 const inputValid = document.querySelector(".input-valid");
+const formData = document.querySelectorAll(".formData");
 const confirmMsg = document.querySelector(".message-confirm");
 
 // Form elements
