@@ -13,7 +13,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.getElementById("reserve");
 const closeModalBtn = document.querySelectorAll(".close");
-const formData = document.querySelectorAll(".formData");
 const inputValid = document.querySelector(".input-valid");
 const confirmMsg = document.querySelector(".message-confirm");
 
@@ -40,9 +39,14 @@ function launchModal() {
 
 // close modal form
 function closeModal () {
-  form.reset();
-  hideError(firstName); hideError(lastName); hideError(email); hideError(birthdate); hideError(quantity); hidecheckboxError(locationChoice); hidecheckboxError(CU);
   modalbg.style.display = "none";
+}
+
+// Close modal with confirm message
+function closeConfirmModal() {
+  modalbg.style.display = "none";
+  confirmMsg.style.display = "none";
+  form.style.display = "block";
 }
 
 // form submit
@@ -50,7 +54,9 @@ form.addEventListener('submit', function(e) {
   e.preventDefault();
   validate();
   if ((validateFirstName()) && (validateLastName()) && (validateEmail()) && (validateBirthDay()) && (validateQuantity()) &&( validationLocation()) && (validateCu())) {
-    ConfirmMsg();
+    confirmMessage();
+    hideAllMsg();
+    form.reset();
   }
 })
 
@@ -121,12 +127,27 @@ function validateEmail() {
     return true;
   }
 }
+
+// Limit the age at 12 years
+function limitAge(input) {
+
+  const birthday = new Date(input.value);
+  const today = new Date();
+  const age = today.getFullYear() - birthday.getFullYear(); 
+
+  if (age < 12) {
+    return false;
+  }else {
+    return true;
+  }
+}
+
 // Birthday date validation
 function validateBirthDay() {
 
 var dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
 
-if (!dateRegex.test(birthdate.value)) {
+if (!dateRegex.test(birthdate.value) || (!limitAge(birthdate))) {
     showError(birthdate , "Veuillez renseigner une date de naissance valide.");
     return false;
   }
@@ -203,8 +224,19 @@ function hidecheckboxError(input) {
 }
 
 // cofirm message
-function ConfirmMsg() {
+function confirmMessage() {
   form.style.display = "none"; 
-  confirmMsg.innerHTML = "<p>Merci !<br> Votre réservation a été reçue.</p>" + '<button class="btn-submit button" onclick="closeModal()">Fermer</button>';
-  form.reset();
+  confirmMsg.innerHTML = "<p>Merci !<br> Votre réservation a été reçue.</p>" + '<button class="btn-submit button" onclick="closeConfirmModal()">Fermer</button>';
+  confirmMsg.style.display = "block";
+}
+
+// Reset all messages
+function hideAllMsg () {
+  hideError(firstName); 
+  hideError(lastName); 
+  hideError(email); 
+  hideError(birthdate); 
+  hideError(quantity); 
+  hidecheckboxError(locationChoice); 
+  hidecheckboxError(CU);
 }
