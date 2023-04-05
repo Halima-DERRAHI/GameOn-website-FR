@@ -145,7 +145,7 @@ function limitAge(input) {
 // Birthday date validation
 function validateBirthDay() {
 
-var dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
+const dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
 
 if (!dateRegex.test(birthdate.value)) {
     showError(birthdate , "Veuillez renseigner une date de naissance valide.");
@@ -174,7 +174,7 @@ function validateQuantity() {
 
 // Location validation
 function validationLocation(){
-  let radioCheck = document.querySelector('input[name = "location"]:checked');
+  const radioCheck = document.querySelector('input[name = "location"]:checked');
   if (!radioCheck){
     checkboxError(locationChoice , "Veuillez renseigner une localisation.");
     return false;
