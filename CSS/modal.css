@@ -459,7 +459,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 460px;
+  /*min-width: 460px;*/
 }
 .hero-content::after {
   content: "";
@@ -536,7 +536,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     white-space: normal;
   }
   .hero-text {

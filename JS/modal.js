@@ -70,6 +70,7 @@ function validate() {
   validateQuantity();
   validationLocation();
   validateCu();
+  return false;
 }
 
 // First name validation
