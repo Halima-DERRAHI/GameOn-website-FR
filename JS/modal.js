@@ -45,6 +45,7 @@ function closeModal () {
 
 // Close modal with confirm message
 function closeConfirmModal() {
+
   modalbg.style.display = "none";
   confirmMsg.style.display = "none";
   form.style.display = "block";
@@ -52,17 +53,20 @@ function closeConfirmModal() {
 
 // form submit
 form.addEventListener('submit', function(e) {
-  e.preventDefault();
-  validate();
-  if ((validateFirstName()) && (validateLastName()) && (validateEmail()) && (validateBirthDay()) && (validateQuantity()) &&( validationLocation()) && (validateCu())) {
-    confirmMessage();
-    hideAllMsg();
-    form.reset();
+
+    e.preventDefault();
+    validate();
+    if ((validateFirstName()) && (validateLastName()) && (validateEmail()) && (validateBirthDay()) && (validateQuantity()) &&( validationLocation()) && (validateCu())) {
+      confirmMessage();
+      hideAllMsg();
+      form.reset();
+    }
   }
-})
+)
 
 // validation form
 function validate() {
+
   validateFirstName();
   validateLastName();
   validateEmail();
@@ -75,6 +79,7 @@ function validate() {
 
 // First name validation
 function validateFirstName () {
+
   if (!firstName.value.trim()){
       showError(firstName , "Veuillez renseigner un prénom." );
       return false;
@@ -95,6 +100,7 @@ function validateFirstName () {
 
 // Last name validation
 function validateLastName () {
+
   if (!lastName.value.trim()){
       showError(lastName , "Veuillez renseigner un nom." );
       return false;
@@ -115,7 +121,9 @@ function validateLastName () {
 
 // email validation
 function validateEmail() {
+  
   const emailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
+
   if (!email.value.trim()) {
     showError(email , "Veuillez renseigner un E-mail.");
     return false;
@@ -137,7 +145,7 @@ function limitAge(input) {
   const today = new Date();
   const age = today.getFullYear() - birthday.getFullYear(); 
 
-  if (age < 12) {
+  if (age < 18 || age > 99) {
     return false;
   }else {
     return true;
@@ -154,7 +162,7 @@ if (!dateRegex.test(birthdate.value)) {
     return false;
   }
   else if (!limitAge(birthdate)){
-    showError(birthdate , "Vous devez avoir plus de 12 ans pour pouvoir faire une réservation.");
+    showError(birthdate , "Vous devez avoir entre 18 et 99 ans pour pouvoir faire une réservation.");
     return false;
   }
   else {
@@ -165,10 +173,15 @@ if (!dateRegex.test(birthdate.value)) {
 
 // Quantity validation
 function validateQuantity() {
+
   if (!quantity.value) {
     showError(quantity , "Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé.");
     return false;
-  } else {
+  } 
+  else if (quantity.value > 99){
+    showError(quantity , "Veuillez renseigner un nombre à deux chiffres maximum.");
+  }
+  else {
     hideError(quantity);
     return true;
   }
@@ -176,7 +189,9 @@ function validateQuantity() {
 
 // Location validation
 function validationLocation(){
+
   const radioCheck = document.querySelector('input[name = "location"]:checked');
+
   if (!radioCheck){
     checkboxError(locationChoice , "Veuillez renseigner une localisation.");
     return false;
@@ -189,6 +204,7 @@ function validationLocation(){
 
 // CU validations
 function validateCu() {
+  
 if (CU.checked) {
     hidecheckboxError(CU);
     return true;
@@ -201,6 +217,7 @@ if (CU.checked) {
 
 // error message function
 function showError(input , message) {
+
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
   msgError.innerText = message;
@@ -209,6 +226,7 @@ function showError(input , message) {
 
 // error checkbox function
 function checkboxError(input , message) {
+
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
   msgError.innerText = message;
@@ -216,6 +234,7 @@ function checkboxError(input , message) {
 
 // hide error message function
 function hideError(input) {
+
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
   msgError.innerText = " ";
@@ -224,6 +243,7 @@ function hideError(input) {
 
 // hide error checkbox function
 function hidecheckboxError(input) {
+
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
   msgError.innerText = " ";
@@ -231,6 +251,7 @@ function hidecheckboxError(input) {
 
 // cofirm message
 function confirmMessage() {
+
   form.style.display = "none"; 
   confirmMsg.innerHTML = "<p>Merci !<br> Votre réservation a été reçue.</p>" + '<button class="btn-submit button" onclick="closeConfirmModal()">Fermer</button>';
   confirmMsg.style.display = "block";
@@ -238,6 +259,7 @@ function confirmMessage() {
 
 // Reset all messages
 function hideAllMsg () {
+
   hideError(firstName); 
   hideError(lastName); 
   hideError(email); 
