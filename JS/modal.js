@@ -174,12 +174,19 @@ if (!dateRegex.test(birthdate.value)) {
 // Quantity validation
 function validateQuantity() {
 
+  const quantityRegex = /^[0-9]{1,2}$/;
+
   if (!quantity.value) {
     showError(quantity , "Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé.");
     return false;
   } 
-  else if (quantity.value > 99){
+  else if (quantity.value.length > 2){
     showError(quantity , "Veuillez renseigner un nombre à deux chiffres maximum.");
+    return false;
+  }
+  else if (!quantityRegex.test(quantity.value)) {
+    showError(quantity , "Veuillez renseigner un nombre valide.");
+    return false;
   }
   else {
     hideError(quantity);

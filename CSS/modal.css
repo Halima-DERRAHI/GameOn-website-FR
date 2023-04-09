@@ -114,6 +114,9 @@ p {
     display: block;
     text-align: left;
   }
+  .topnav.responsive .main-navbar {
+    margin-right: 40px;
+  }
 }
 
  @media screen and (max-width: 540px) {
