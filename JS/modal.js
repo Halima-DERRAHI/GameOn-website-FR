@@ -13,7 +13,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.getElementById("reserve");
 const closeModalBtn = document.querySelectorAll(".close");
-const inputValid = document.querySelector(".input-valid");
 const formData = document.querySelectorAll(".formData");
 const confirmMsg = document.querySelector(".message-confirm");
 
@@ -25,6 +24,7 @@ const birthdate = document.getElementById ("birthdate");
 const quantity = document.getElementById ("quantity");
 const locationChoice = document.getElementById("location6");
 const CU = document.getElementById("checkbox1");
+const inputValid = document.querySelector(".input-valid");
   
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -45,7 +45,7 @@ function closeModal () {
 
 // Close modal with confirm message
 function closeConfirmModal() {
-
+  // Change the elements display
   modalbg.style.display = "none";
   confirmMsg.style.display = "none";
   form.style.display = "block";
@@ -78,60 +78,70 @@ function validate() {
 }
 
 // First name validation
-function validateFirstName () {
+function validateFirstName() {
 
-  if (!firstName.value.trim()){
-      showError(firstName , "Veuillez renseigner un prénom." );
-      return false;
-      }
-    else if (firstName.value.length <= 1) {
-      showError(firstName , "Veuillez entrer 2 caractères ou plus pour le champ du prenom." );
-      return false;
-      }
-    else if (!firstName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g) ) {
-      showError(firstName , "Veuillez entrer un prénom valide.");
-      return false;
-      }
-     else {
-      hideError (firstName);
-      return true;
-     } 
+  // Check whitespaces
+  if (!firstName.value.trim()) {
+    showError(firstName , "Veuillez renseigner un prénom." );
+    return false;
+  }
+  // Check string length
+  else if (firstName.value.length <= 1) {
+    showError(firstName , "Veuillez entrer 2 caractères ou plus pour le champ du prenom." );
+    return false;
+  }
+  // Check if the string is valid
+  else if (!firstName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g) ) {
+    showError(firstName , "Veuillez entrer un prénom valide.");
+    return false;
+  }
+  // Valid string
+  else {
+  hideError (firstName);
+  return true;
+  } 
 }
 
 // Last name validation
-function validateLastName () {
+function validateLastName() {
 
-  if (!lastName.value.trim()){
-      showError(lastName , "Veuillez renseigner un nom." );
-      return false;
-      }
-    else if (lastName.value.length <= 1) {
-      showError(lastName , "Veuillez entrer 2 caractères ou plus pour le champ du nom." );
-      return false;
-      }
-    else if (!lastName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g)) {
-      showError(lastName , "Veuillez entrer un nom valide." );
-      return false;
-      }
-     else {
-      hideError (lastName);
-      return true;
-     } 
+  // Check whitespaces
+  if (!lastName.value.trim()) {
+    showError(lastName , "Veuillez renseigner un nom." );
+    return false;
+  }
+  // Check string length
+  else if (lastName.value.length <= 1) {
+    showError(lastName , "Veuillez entrer 2 caractères ou plus pour le champ du nom." );
+    return false;
+  }
+  // Check if the string is valid
+  else if (!lastName.value.match(/^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g)) {
+    showError(lastName , "Veuillez entrer un nom valide." );
+    return false;
+  }
+  // Valid string
+  else {
+    hideError (lastName);
+    return true;
+  } 
 }
 
 // email validation
 function validateEmail() {
   
   const emailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
-
+  // Check whitespaces
   if (!email.value.trim()) {
     showError(email , "Veuillez renseigner un E-mail.");
     return false;
   }
+  // Check if the string is valid
   else if (!email.value.match(emailRegex)) {
     showError(email , "Veuillez renseigner un E-mail valide.");
     return false;
   }
+  // Valid string
   else {
     hideError(email);
     return true;
@@ -155,16 +165,18 @@ function limitAge(input) {
 // Birthday date validation
 function validateBirthDay() {
 
-const dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
-
-if (!dateRegex.test(birthdate.value)) {
+  const dateRegex = /^[1-2][0-9][0-9][0-9]\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
+  // Check if the value is valid
+  if (!dateRegex.test(birthdate.value)) {
     showError(birthdate , "Veuillez renseigner une date de naissance valide.");
     return false;
   }
+  // Check the age group
   else if (!limitAge(birthdate)){
     showError(birthdate , "Vous devez avoir entre 18 et 99 ans pour pouvoir faire une réservation.");
     return false;
   }
+  // Valid value
   else {
     hideError(birthdate);
     return true;
@@ -180,14 +192,17 @@ function validateQuantity() {
     showError(quantity , "Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé.");
     return false;
   } 
+  // Check string length
   else if (quantity.value.length > 2){
     showError(quantity , "Veuillez renseigner un nombre à deux chiffres maximum.");
     return false;
   }
+  // Check if the value is valid
   else if (!quantityRegex.test(quantity.value)) {
     showError(quantity , "Veuillez renseigner un nombre valide.");
     return false;
   }
+  // Valid value
   else {
     hideError(quantity);
     return true;
@@ -203,6 +218,7 @@ function validationLocation(){
     checkboxError(locationChoice , "Veuillez renseigner une localisation.");
     return false;
   }
+  // Valid value
   else {
     hidecheckboxError(locationChoice);
     return true;
@@ -212,10 +228,11 @@ function validationLocation(){
 // CU validations
 function validateCu() {
   
-if (CU.checked) {
+  if (CU.checked) {
     hidecheckboxError(CU);
     return true;
   }
+  // Not checked
   else {
     checkboxError(CU , "Vous devez vérifier que vous acceptez les termes et conditions d'utilisation.");
     return false;
@@ -227,6 +244,7 @@ function showError(input , message) {
 
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
+
   msgError.innerText = message;
   input.className = "text-control input-error";
 }
@@ -236,6 +254,7 @@ function checkboxError(input , message) {
 
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
+
   msgError.innerText = message;
 }
 
@@ -244,6 +263,7 @@ function hideError(input) {
 
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
+
   msgError.innerText = " ";
   input.className = "text-control";
 }
@@ -253,6 +273,7 @@ function hidecheckboxError(input) {
 
   const formDataInput = input.parentElement;
   const msgError = formDataInput.querySelector("small");
+  
   msgError.innerText = " ";
 }
 
