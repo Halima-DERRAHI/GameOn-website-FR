@@ -36,10 +36,10 @@ p {
   margin-right: 0%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,7 @@ p {
 
 .topnav .icon {
   display: none;
-  color:#ff0000;
+  color: #ff0000;
 }
 @media screen and (max-width: 992px) {
   .main-navbar {
@@ -80,7 +80,7 @@ p {
 @media screen and (max-width: 768px) {
   .header-logo img {
     width: 70%;
-    padding: 12PX 0px;
+    padding: 12px 0px;
   }
   .main-navbar {
     margin-top: 0;
@@ -119,14 +119,16 @@ p {
   }
 }
 
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     /*margin-top: -15px;*/
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -239,9 +241,9 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-/*.input-valid {
+.input-valid {
   border: 2px solid #279e7a;
-}*/
+}
 .input-error {
   border: 2px solid #fe142f;
 }
@@ -275,7 +277,7 @@ small {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
- 
+
 /*input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -501,7 +503,7 @@ small {
   outline: none;
   text-transform: capitalize;
   font-size: 1.3rem;
-  padding: 12px 30px;  
+  padding: 12px 30px;
   margin: 0;
   margin-top: 59px;
 }
