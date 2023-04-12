@@ -532,6 +532,11 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+@media screen and (max-width: 992px) {
+  .hero-headline {
+    white-space: normal;
+  }
+}
 @media screen and (max-width: 768px) {
   .hero-section {
     display: block;

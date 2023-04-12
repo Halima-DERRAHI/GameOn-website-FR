@@ -37,23 +37,31 @@ function launchModal() {
   window.scroll(0, 0);
 }
 
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
-
 // Close modal with confirm message
-function closeConfirmModal() {
+function closeModal() {
+  // Check if confirmMsg is displayed
+  if (confirmMsg.style.display === "block") {
+    confirmMsg.style.display = "none";
+    confirmMsg.innerHTML = "";
+  }
   // Change the elements display
   modalbg.style.display = "none";
-  confirmMsg.style.display = "none";
   form.style.display = "block";
 }
 
 // form submit
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (validate()) {
+  validate()
+  if (
+  validateFirstName() &&
+  validateLastName() &&
+  validateEmail() &&
+  validateBirthDay() &&
+  validateQuantity() &&
+  validationLocation() &&
+  validateCu()
+  ) {
     confirmMessage();
     hideAllMsg();
     form.reset();
@@ -69,12 +77,12 @@ quantity.addEventListener("input", validateQuantity);
 
 // validation form
 function validate() {
-  validateFirstName() &&
-  validateLastName() &&
-  validateEmail() &&
-  validateBirthDay() &&
-  validateQuantity() &&
-  validationLocation() &&
+  validateFirstName();
+  validateLastName();
+  validateEmail();
+  validateBirthDay();
+  validateQuantity();
+  validationLocation();
   validateCu()
 }
 
@@ -281,9 +289,16 @@ function checkboxMsg(input, message) {
 // cofirm message
 function confirmMessage() {
   form.style.display = "none";
-  confirmMsg.innerHTML =
-    "<p>Merci pour <br>votre inscription.</p>" +
-    '<button class="btn-submit button" onclick="closeConfirmModal()">Fermer</button>';
+  const message = document.createElement("p");
+  message.textContent = "Merci pour votre inscription.";
+
+  const closeButton = document.createElement("button");
+  closeButton.className = "btn-submit button";
+  closeButton.textContent = "Fermer";
+  closeButton.addEventListener("click", closeModal);
+
+  confirmMsg.append(message , closeButton);
+ 
   confirmMsg.style.display = "block";
 }
 
