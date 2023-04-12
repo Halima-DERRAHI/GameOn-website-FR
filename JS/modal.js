@@ -74,6 +74,7 @@ lastName.addEventListener("input", validateLastName);
 email.addEventListener("input", validateEmail);
 birthdate.addEventListener("input", validateBirthDay);
 quantity.addEventListener("input", validateQuantity);
+CU.addEventListener("click", validateCu);
 
 // validation form
 function validate() {
