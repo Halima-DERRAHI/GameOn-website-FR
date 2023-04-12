@@ -53,16 +53,7 @@ function closeConfirmModal() {
 // form submit
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  validate();
-  if (
-    validateFirstName() &&
-    validateLastName() &&
-    validateEmail() &&
-    validateBirthDay() &&
-    validateQuantity() &&
-    validationLocation() &&
-    validateCu()
-  ) {
+  if (validate()) {
     confirmMessage();
     hideAllMsg();
     form.reset();
@@ -78,14 +69,13 @@ quantity.addEventListener("input", validateQuantity);
 
 // validation form
 function validate() {
-  validateFirstName();
-  validateLastName();
-  validateEmail();
-  validateBirthDay();
-  validateQuantity();
-  validationLocation();
-  validateCu();
-  return false;
+  validateFirstName() &&
+  validateLastName() &&
+  validateEmail() &&
+  validateBirthDay() &&
+  validateQuantity() &&
+  validationLocation() &&
+  validateCu()
 }
 
 // First name validation
