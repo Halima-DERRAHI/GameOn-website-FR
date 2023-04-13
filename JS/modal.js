@@ -274,7 +274,7 @@ function validateCu() {
 function checkMsg(input, message, classChoice) {
   const formDataInput = input.parentElement;
   const fieldMsg = formDataInput.querySelector("small");
-
+  // Display message
   fieldMsg.innerText = message;
   input.className = "text-control " + classChoice;
 }
@@ -283,23 +283,23 @@ function checkMsg(input, message, classChoice) {
 function checkboxMsg(input, message) {
   const formDataInput = input.parentElement;
   const fieldMsg = formDataInput.querySelector("small");
-
+  // Display message
   fieldMsg.innerText = message;
 }
 
 // cofirm message
 function confirmMessage() {
   form.style.display = "none";
+  // Create a paragraph 
   const message = document.createElement("p");
-  message.textContent = "Merci pour votre inscription.";
-
+  message.innerHTML = "Merci pour<br>votre inscription.";
+  // Create a button
   const closeButton = document.createElement("button");
   closeButton.className = "btn-submit button";
   closeButton.textContent = "Fermer";
   closeButton.addEventListener("click", closeModal);
-
+  // Display elements
   confirmMsg.append(message , closeButton);
- 
   confirmMsg.style.display = "block";
 }
 
