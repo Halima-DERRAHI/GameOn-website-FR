@@ -22,6 +22,7 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const locationChoice = document.getElementById("location6");
+const locationChoices = document.querySelectorAll("input[type=\"radio\"][name=\"location\"]");
 const CU = document.getElementById("checkbox1");
 
 // launch modal event
@@ -54,12 +55,12 @@ form.addEventListener("submit", function (e) {
 	validate();
 	if (
 		validateFirstName() &&
-    validateLastName() &&
-    validateEmail() &&
-    validateBirthDay() &&
-    validateQuantity() &&
-    validationLocation() &&
-    validateCu()
+		validateLastName() &&
+		validateEmail() &&
+		validateBirthDay() &&
+		validateQuantity() &&
+		validateLocation() &&
+		validateCu()
 	) {
 		confirmMessage();
 		hideAllMsg();
@@ -73,6 +74,7 @@ lastName.addEventListener("input", validateLastName);
 email.addEventListener("input", validateEmail);
 birthdate.addEventListener("input", validateBirthDay);
 quantity.addEventListener("input", validateQuantity);
+locationChoices.forEach(locationChoice => locationChoice.addEventListener("click", validateLocation));
 CU.addEventListener("click", validateCu);
 
 // validation form
@@ -82,7 +84,7 @@ function validate() {
 	validateEmail();
 	validateBirthDay();
 	validateQuantity();
-	validationLocation();
+	validateLocation();
 	validateCu();
 }
 
@@ -163,7 +165,7 @@ function validateEmail() {
 	}
 }
 
-// Limit the age at 12 years
+// Limit the age at 18 years
 function limitAge(input) {
 	const birthday = new Date(input.value);
 	const today = new Date();
@@ -207,7 +209,7 @@ function validateBirthDay() {
 
 // Quantity validation
 function validateQuantity() {
-	const quantityRegex = /^[0-9]{1,2}$/;
+	const quantityRegex = /^[1-9]{1,2}$/;
 
 	if (!quantity.value) {
 		checkMsg(
@@ -239,10 +241,9 @@ function validateQuantity() {
 }
 
 // Location validation
-function validationLocation() {
-	const radioCheck = document.querySelector('input[name = "location"]:checked');
-
-	if (!radioCheck) {
+function validateLocation() {
+	const radioCheck = document.querySelector("input[name = \"location\"]:checked");
+	if (radioCheck == null) {
 		checkboxMsg(locationChoice, "Veuillez renseigner une localisation.");
 		return false;
 	}
